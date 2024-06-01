@@ -1,0 +1,20 @@
+<main>
+    <h1>Users List</h1>
+
+    <p>
+        <button (click)="addUser()">Add User!</button>
+    </p>
+
+    @for(user of users; track user.email) {
+        <div class="user-card">
+            <img [src]="user.image" [alt]="user.fullname">
+
+            <article>
+                <h4>{{user.fullname}}</h4>
+                <p>{{user.email}}</p>
+                <span>{{user.job}}</span>
+                <button (click)="deleteUser(user.email)">Delete User</button>
+            </article>
+        </div>
+    }
+</main>
