@@ -1,3 +1,4 @@
 [submodule "src/app/users"]
     path = src/app/users
     url = https://github.com/Eduardd97/Angular.git
+    branch = 2ec6c69ef43a4b76f5a97ac221da8fbf552def74
