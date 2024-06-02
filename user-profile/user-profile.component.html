@@ -1,0 +1,21 @@
+@if (user) {
+<div class="user-card-wrapper">
+    <img [src]="user.image" alt="{{ user.fullname }}" />
+
+    <h3>{{ user.fullname }}</h3>
+    <p>Email: {{ user.email }}</p>
+    <p>Job: {{ user.job }}</p>
+    <p>Salary: {{ user.salary }}</p>
+    <p>Bio: {{ user.bio }}</p>
+    <div>
+        <ul>
+            <li *ngFor="let skill of user.skills">{{ skill }}</li>
+        </ul>
+    </div>
+    @if(!user) {
+    <div>
+        <p>User not found.</p>
+    </div>
+    }
+</div>
+}

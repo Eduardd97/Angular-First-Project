@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { UserType } from '../users.types';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-users-list-item',
@@ -7,5 +8,8 @@ import { UserType } from '../users.types';
   styleUrl: './users-list-item.component.scss',
 })
 export class UsersListItemComponent {
+  constructor(public usersService: UsersService) {}
+
   @Input() user: UserType | undefined;
+  @Input() name: string = "";
 }
