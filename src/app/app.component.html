@@ -1,0 +1,11 @@
+<header class="header">
+  <h1>Dashboard</h1>
+
+  <nav>
+    @for (link of headerLinks; track link) {
+    <a [routerLink]="link.path" >{{ link.title }}</a>
+    }
+  </nav>
+</header>
+
+<router-outlet></router-outlet>
