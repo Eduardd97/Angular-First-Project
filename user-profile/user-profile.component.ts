@@ -16,11 +16,7 @@ export class UserProfileComponent implements OnInit {
     ngOnInit() {
         this.userId = window.location.pathname.split("/").at(-1);
         if (this.userId) {
-            this.user = this.generateUserCard(this.userId);
+            this.user = this.usersService.generateUserCard(this.userId);
         }
-    }
-
-    generateUserCard(userId: string): UserType | undefined {
-      return this.usersService.users.find(user => user.id === userId);
     }
 }

@@ -1,6 +1,4 @@
-import { Component, OnInit } from "@angular/core";
-import { fa, faker, ne, th } from "@faker-js/faker";
-import { UserType } from "../users.types";
+import { Component } from "@angular/core";
 import { UsersService } from "../users.service";
 
 @Component({

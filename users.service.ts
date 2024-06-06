@@ -67,4 +67,8 @@ export class UsersService {
             (user) => user.email !== userEmail
         ));
     }
+
+    generateUserCard(userId: string): UserType | undefined {
+        return this.users.find(user => user.id === userId);
+    }
 }

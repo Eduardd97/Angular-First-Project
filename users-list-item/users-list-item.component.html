@@ -12,7 +12,7 @@
             <p>{{user.salary}}$</p>
         </article>
         <a [routerLink]="user.id" >User's profile</a>
-        <button (click)="this.usersService.deleteUser(user.email)">Delete User</button>   
+        <button (click)="usersService.deleteUser(user.email)">Delete User</button>   
     </div>
 }
 

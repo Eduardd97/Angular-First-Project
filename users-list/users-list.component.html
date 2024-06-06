@@ -2,7 +2,7 @@
     <h1>Users List</h1>
 
     <p>
-        <button (click)="this.usersService.addUser()">Add User!</button>
+        <button (click)="usersService.addUser()">Add User!</button>
     </p>
     <div class="user-list">
         @for(user of usersService.users; track user.email) {

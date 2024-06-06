@@ -12,10 +12,9 @@
             <li *ngFor="let skill of user.skills">{{ skill }}</li>
         </ul>
     </div>
-    @if(!user) {
+</div>
+} @else {
     <div>
         <p>User not found.</p>
     </div>
-    }
-</div>
 }
