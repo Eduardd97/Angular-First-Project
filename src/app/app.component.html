@@ -3,7 +3,7 @@
 
   <nav>
     @for (link of headerLinks; track link) {
-    <a [routerLink]="link.path" >{{ link.path?.toUpperCase() }}</a>
+    <a [routerLink]="link.path" >{{ link.title }}</a>
     }
   </nav>
 </header>
