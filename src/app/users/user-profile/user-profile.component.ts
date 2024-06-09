@@ -13,7 +13,8 @@ export class UserProfileComponent implements OnInit {
   userId: string | undefined;
   user: UserType | undefined;
 
-  constructor(public usersService: UsersService) {}
+  constructor(
+    public usersService: UsersService) {}
 
   ngOnInit() {
     this.userId = window.location.pathname.split('/').at(-1);
@@ -22,3 +23,5 @@ export class UserProfileComponent implements OnInit {
     }
   }
 }
+
+

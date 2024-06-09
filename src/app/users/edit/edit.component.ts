@@ -1,31 +1,23 @@
-import { Component } from '@angular/core';
-import { faker } from '@faker-js/faker';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { UserType } from '../users.types';
+import { FormControl } from '@angular/forms';
+import { faker } from '@faker-js/faker';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrl: './user-form.component.scss',
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss'],
 })
-export class UserFormComponent {
+export class EditComponent implements OnInit {
+  userId: string | undefined;
+  
   constructor(public usersService: UsersService) {}
 
   skills: Array<string> = ['JS', 'HTML', 'CSS', 'React', 'Angular', 'TS'];
 
-  defaultEmails: Array<string> = [
-    'email@1gmail.com',
-    'email@2gmail.com',
-    'email@3gmail.com',
-  ];
-
-  setEmailFromDefault(email: string) {
-    this.userData.email.setValue(email);
-  }
-
   userData = {
-    id: faker.database.mongodbObjectId(),
+    id: new FormControl(''), // Используйте FormControl для поля 'id'
     image: faker.image.avatar(),
     email: new FormControl(''),
     bio: new FormControl(''),
@@ -35,12 +27,14 @@ export class UserFormComponent {
     skills: new FormControl<string[]>([]),
   };
 
-  addSkillToUser(skill: string) {
-    // if (this.userData.skills.value) {
-    //   this.userData.skills.value.push(skill);
-    // }
+  ngOnInit() {
+    // Установите значение 'id' из usersService при инициализации компонента
+    this.userId = window.location.pathname.split('/').at(-1);
+    if(this.userId) this.userData.id.setValue(this.userId);
+  }
 
-    // this.userData.skills.value?.push(skill);
+  addSkillToUser(skill: string) {
+
     const skills = this.userData.skills.value
       ? [...this.userData.skills.value, skill]
       : [];
@@ -48,19 +42,21 @@ export class UserFormComponent {
     this.userData.skills.setValue(skills);
   }
 
+
   removeUserSkill(skill: string) {
     const newSkills = this.userData.skills.value?.filter((sk) => sk !== skill);
 
     newSkills && this.userData.skills.setValue(newSkills);
   }
 
-  onSubmit() {
-    const { id, image, skills } = this.userData;
+  onSubmitEdit() {
+    const { image, skills } = this.userData;
+    const id = this.userData.id.value || ''
 
     const user: UserType = {
-      id,
+      id,  // Получите значение из FormControl для поля 'id'
       image,
-      skills: this.userData.skills.value || [],
+      skills: skills.value || [],
       email: this.userData.email.value || '',
       bio: this.userData.bio.value || '',
       fullname: this.userData.fullname.value || '',
@@ -70,12 +66,12 @@ export class UserFormComponent {
 
     console.log(user, 'user from form');
 
-    this.userData.email.setValue("");
-    this.userData.bio.setValue("");
-    this.userData.fullname.setValue("");
-    this.userData.job.setValue("");
+    this.userData.email.setValue('');
+    this.userData.bio.setValue('');
+    this.userData.fullname.setValue('');
+    this.userData.job.setValue('');
     this.userData.salary.setValue(0);
 
-    this.usersService.addUser(user);
+    this.usersService.editProfile(user);
   }
 }

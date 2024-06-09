@@ -1,6 +1,9 @@
 @if (user) {
 <div class="user-card-wrapper">
-    <img [src]="user.image" alt="{{ user.fullname }}" />
+    <div class="edit">
+        <a class="edit" [routerLink]="['/users/edit', user.id]" >Edit</a>
+        <img [src]="user.image" alt="{{ user.fullname }}" />
+    </div>
 
     <h3>{{ user.fullname }}</h3>
     <p>Email: {{ user.email }}</p>
@@ -18,3 +21,5 @@
         <p>User not found.</p>
     </div>
 }
+
+<router-outlet></router-outlet>

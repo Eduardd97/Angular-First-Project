@@ -1,11 +1,8 @@
 <main>
     <h1>Users List</h1>
 
-    <p>
-        <button (click)="usersService.addUser()">Add User!</button>
-    </p>
     <div class="user-list">
-        @for(user of usersService.users; track user.email) {
+        @for(user of usersService.users; track user.id) {
             <div>
                 <app-users-list-item [user]="user" [name]="user.fullname"></app-users-list-item>
             </div>

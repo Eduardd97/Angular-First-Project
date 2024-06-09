@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { UsersService } from '../users.service';
 import { UserType } from '../users.types';

@@ -22,6 +22,6 @@ export class AppComponent {
     {
       path: "users/form/create",
       title: "Register a user"
-    }
+    },
   ];
 }

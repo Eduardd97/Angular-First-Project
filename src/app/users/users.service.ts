@@ -1,74 +1,73 @@
-import { Injectable } from "@angular/core";
-import { UserType } from "./users.types";
-import { faker } from "@faker-js/faker";
+import { Injectable } from '@angular/core';
+import { UserType } from './users.types';
+import { faker } from '@faker-js/faker';
 
 @Injectable({
-    providedIn: "root",
+  providedIn: 'root',
 })
 export class UsersService {
-    constructor() {
-      this.users = this.generateUser()
-    }
+  constructor() {
+    this.users = this.generateUser();
+  }
 
-    users: Array<UserType> = [];
+  users: Array<UserType> = [];
+  user: UserType | undefined;
 
-    // other functions
-    generateUser(): Array<UserType> {
-        const users = new Array(15).fill(0);
+  // other functions
+  generateUser(): Array<UserType> {
+    const users = new Array(15).fill(0);
 
-        return users.map((element, index) => {
-            return {
-                id: faker.database.mongodbObjectId(),
-                fullname: faker.person.fullName(),
-                email: faker.internet.email(),
-                salary: faker.number.int({ min: 500, max: 6000 }),
-                job: faker.person.jobTitle(),
-                image: faker.image.avatar(),
-                bio: faker.person.bio(),
-                skills: faker.helpers.arrayElements([
-                    "js",
-                    "ts",
-                    "html",
-                    "css",
-                    "angular",
-                    "react",
-                ]),
-            };
-        });
-    }
+    return users.map((element, index) => {
+      return {
+        id: faker.database.mongodbObjectId(),
+        fullname: faker.person.fullName(),
+        email: faker.internet.email(),
+        salary: faker.number.int({ min: 500, max: 6000 }),
+        job: faker.person.jobTitle(),
+        image: faker.image.avatar(),
+        bio: faker.person.bio(),
+        skills: faker.helpers.arrayElements([
+          'js',
+          'ts',
+          'html',
+          'css',
+          'angular',
+          'react',
+        ]),
+      };
+    });
+  }
 
-    createUser(): UserType {
-        return {
-            id: faker.database.mongodbObjectId(),
-            fullname: faker.person.fullName(),
-            email: faker.internet.email(),
-            salary: faker.number.int({ min: 500, max: 6000 }),
-            job: faker.person.jobTitle(),
-            image: faker.image.avatar(),
-            bio: faker.person.bio(),
-            skills: faker.helpers.arrayElements([
-                "js",
-                "ts",
-                "html",
-                "css",
-                "angular",
-                "react",
-            ]),
-        };
-    }
+  addUser(user: UserType) {
+    this.users.push(user);
+  }
 
-    addUser() {
-        const newUser = this.createUser();
-        this.users.push(newUser);
-    }
+  deleteUser(userEmail: string) {
+    return (this.users = this.users.filter((user) => user.email !== userEmail));
+  }
 
-    deleteUser(userEmail: string) {
-        return (this.users = this.users.filter(
-            (user) => user.email !== userEmail
-        ));
-    }
+  generateUserCard(userId: string): UserType | undefined {
+    return this.users.find((user) => user.id === userId);
+  }
 
-    generateUserCard(userId: string): UserType | undefined {
-        return this.users.find(user => user.id === userId);
-    }
+  generaeUserFormEdit(userId: string) {
+    return this.users.find((user) => user.id === userId);
+  }
+
+  editProfile(us: UserType) {
+    return this.users.map((user) => {
+      if (user.id === us.id) {
+        user.email = us.email;
+        user.image = us.image;
+        user.fullname = us.fullname;
+        user.job = us.job;
+        user.salary = us.salary;
+        user.skills = us.skills;
+        user.bio = us.bio;
+        user.id = us.id
+      }
+
+      return user;
+    });
+  }
 }
