@@ -1,0 +1,20 @@
+@if(user) {
+
+    
+    <div class="user-card">
+        <h2>Name: {{name}}</h2>
+        
+        <img [src]="user.image" [alt]="user.fullname">
+    
+        <article>
+            <h4>{{user.email}}</h4>
+            <p>{{user.job}}</p>
+            <p>{{user.salary}}$</p>
+        </article>
+        <a [routerLink]="user.id" >User's profile</a>
+        <button (click)="usersService.deleteUser(user.email)">Delete User</button>   
+    </div>
+}
+
+<router-outlet></router-outlet>
+

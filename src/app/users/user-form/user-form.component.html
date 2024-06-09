@@ -1,0 +1,45 @@
+<div class="form">
+    <h2>Register a user</h2>
+    <!-- email: new FormControl(''),
+      bio: new FormControl(''),
+      fullname: new FormControl(''),
+      job: new FormControl(''),
+      salary: new FormControl(0), -->
+    <input
+      name="email"
+      type="text"
+      [formControl]="userData.email"
+      placeholder="Email"
+    />
+  
+    <input
+      name="bio"
+      type="text"
+      [formControl]="userData.bio"
+      placeholder="Bio"
+    />
+  
+    <input
+      name="fullname"
+      type="text"
+      [formControl]="userData.fullname"
+      placeholder="Fullname"
+    />
+  
+    <input
+      name="job"
+      type="text"
+      [formControl]="userData.job"
+      placeholder="Job"
+    />
+    
+    <input 
+      id="salary"
+      name="salary"
+      type="number"
+      [formControl]="userData.salary"
+    />
+    <label for="salary">Salary</label>
+  
+    <button (click)="onSubmit()">Create User</button>
+  </div>
