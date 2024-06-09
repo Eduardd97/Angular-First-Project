@@ -11,6 +11,7 @@ import { faker } from '@faker-js/faker';
 })
 export class EditComponent implements OnInit {
   userId: string | undefined;
+  notSelected: boolean = false;
   
   constructor(public usersService: UsersService) {}
 
@@ -40,6 +41,8 @@ export class EditComponent implements OnInit {
       : [];
 
     this.userData.skills.setValue(skills);
+
+    this.notSelected != this.notSelected
   }
 
 

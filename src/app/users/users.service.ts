@@ -57,14 +57,13 @@ export class UsersService {
   editProfile(us: UserType) {
     return this.users.map((user) => {
       if (user.id === us.id) {
-        user.email = us.email;
+        us.email === "" ? user.email : user.email = us.email;
         user.image = us.image;
-        user.fullname = us.fullname;
-        user.job = us.job;
-        user.salary = us.salary;
-        user.skills = us.skills;
-        user.bio = us.bio;
-        user.id = us.id
+        us.fullname === "" ? user.fullname : user.fullname = us.fullname;
+        us.job === "" ? user.job : user.job = us.job;
+        us.salary === 0 ? user.salary : user.salary = us.salary;
+        us.skills.length === 0 ? user.skills : user.skills = us.skills;
+        us.bio === "" ? user.bio : user.bio = us.bio;
       }
 
       return user;
