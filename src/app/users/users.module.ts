@@ -36,11 +36,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router'; // Импортируем RouterModule
 
 import { UsersService } from './users.service';
-import { UsersListComponent } from './users-list/users-list.component';
+
 import { UsersListItemComponent } from './users-list-item/users-list-item.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EditComponent } from './edit/edit.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   declarations: [

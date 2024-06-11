@@ -58,7 +58,7 @@ export class UsersService {
     return this.users.map((user) => {
       if (user.id === us.id) {
         us.email === "" ? user.email : user.email = us.email;
-        user.image = us.image;
+        user.image = user.image;
         us.fullname === "" ? user.fullname : user.fullname = us.fullname;
         us.job === "" ? user.job : user.job = us.job;
         us.salary === 0 ? user.salary : user.salary = us.salary;
