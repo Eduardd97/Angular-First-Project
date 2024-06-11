@@ -33,7 +33,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router'; // Импортируем RouterModule
+import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router'; // Импортируем RouterModule
 
 import { UsersService } from './users.service';
 
@@ -42,6 +42,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EditComponent } from './edit/edit.component';
 import { UsersListComponent } from './users-list/users-list.component';
+
 
 @NgModule({
   declarations: [
@@ -55,8 +56,11 @@ import { UsersListComponent } from './users-list/users-list.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule // Добавляем RouterModule в раздел imports
+    RouterModule,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
   ],
-  providers: [UsersService],
+  providers: [UsersService, Router],
 })
 export class UsersModule {}

@@ -3,6 +3,7 @@ import { UsersService } from '../users.service';
 import { UserType } from '../users.types';
 import { FormControl } from '@angular/forms';
 import { faker } from '@faker-js/faker';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -13,7 +14,7 @@ export class EditComponent implements OnInit {
   userId: string | undefined;
   notSelected: boolean = false;
   
-  constructor(public usersService: UsersService) {}
+  constructor(public usersService: UsersService, public router: Router) {}
 
   skills: Array<string> = ['JS', 'HTML', 'CSS', 'React', 'Angular', 'TS'];
 
@@ -76,5 +77,7 @@ export class EditComponent implements OnInit {
     this.userData.salary.setValue(0);
 
     this.usersService.editProfile(user);
+
+    this.router.navigate([`users/${id}`])
   }
 }
