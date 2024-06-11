@@ -2,6 +2,9 @@
   command = "ng build --configuration production"
   publish = "dist/user-dashboard/browser"
 
+[build.bundle]
+  max_size = "5mb"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
