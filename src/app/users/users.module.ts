@@ -18,7 +18,7 @@ import { UsersListComponent } from './users-list/users-list.component';
     UsersListItemComponent,
     UserProfileComponent,
     UserFormComponent,
-    EditComponent
+    EditComponent,
   ],
   exports: [UsersListComponent, UserProfileComponent, UserFormComponent, EditComponent],
   imports: [
