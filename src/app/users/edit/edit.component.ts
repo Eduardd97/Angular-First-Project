@@ -78,6 +78,6 @@ export class EditComponent implements OnInit {
 
     this.usersService.editProfile(user);
 
-    this.router.navigate([`users/${id}`])
+    this.router.navigate([`users/${id}`]);
   }
 }
